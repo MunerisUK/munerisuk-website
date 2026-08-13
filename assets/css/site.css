@@ -262,8 +262,41 @@ a.card:hover {
   letter-spacing: .08em;
   margin-bottom: .9rem;
 }
+/* Diamond marker, cycling the symbol's three colours across the grid. */
+.card__mark {
+  display: block; width: .68rem; height: .68rem;
+  margin-bottom: 1rem; border-radius: 1px;
+  transform: rotate(45deg);
+  background: var(--brand-cyan);
+}
+.grid > *:nth-child(3n+2) .card__mark { background: var(--brand-orange); }
+.grid > *:nth-child(3n+3) .card__mark { background: var(--brand-slate); }
+
 .card h3 { margin-bottom: .6rem; }
 .card p { color: var(--text-muted); font-size: var(--step-0); }
+
+/* Category label at the head of an engagement card. */
+.card__tag {
+  align-self: start;
+  font-size: var(--step--1);
+  font-weight: 650;
+  letter-spacing: var(--eyebrow-spacing);
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: .25rem .7rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg);
+}
+
+/* Sector / context line at the foot of an engagement card. */
+.card__meta {
+  margin-top: auto; padding-top: 1.25rem;
+  font-size: var(--step--1); font-weight: 600;
+  color: var(--accent-warm);
+}
+.section--dark .card__meta { color: var(--brand-orange); }
 .card__link {
   margin-top: auto; padding-top: 1.25rem;
   font-size: var(--step--1); font-weight: 650; color: var(--accent-warm);

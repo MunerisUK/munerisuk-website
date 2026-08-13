@@ -5,8 +5,8 @@ dependencies, no JavaScript framework — plain HTML, CSS and ~60 lines of
 progressive-enhancement JS. It will run on any static host.
 
 ```
-index.html         Home
-services.html      Four service practices (#board #interim #pe #ai)
+index.html         Home — hero, services overview, selected engagements (#work)
+services.html      Six service lines (#interim #ps #reviews #maturity #advisory #tools)
 about.html         Martin Carpenter — profile, career, credentials
 contact.html       Enquiry form (mailto) + company details
 404.html           Not-found page
@@ -22,15 +22,23 @@ robots.txt, sitemap.xml
 
 | Section | Source |
 | --- | --- |
-| Positioning, services, career, credentials | `Martin Carpenter Feb 2026 CV.docx` (OneDrive) |
+| Hero, stats, six service lines, selected engagements | Copy supplied from the live Netlify build, used verbatim |
+| Service detail pages, About, Contact | `Martin Carpenter Feb 2026 CV.docx` (OneDrive) |
 | Logo artwork and the four brand colours | OneDrive brand drop, sampled from the source PNGs |
 | Company number 09096411 | Companies House public register |
 
+The homepage copy is the supplied wording unchanged. The per-service detail on
+`services.html` expands each of the six one-liners; that expansion is written,
+not sourced, so read it before publishing.
+
 ## Scope
 
-The site presents Muneris as a consultancy practice only — advisory, interim
-leadership and PE work. **Software products and ventures (WealthHorizon) are
-deliberately out of scope for now.**
+Muneris is positioned as **interim leadership and advisory**. Six service
+lines, with engagements presented anonymously.
+
+**WealthHorizon remains out of scope.** Note that the "Software & tools"
+service line is a different thing — templates and assessment frameworks
+distilled from client engagements, not a product venture.
 
 An earlier revision included a `ventures.html` page covering WealthHorizon and
 the board-advisory portfolio. It was removed rather than hidden, so the nav,
@@ -111,11 +119,30 @@ Any static host works. The repository root *is* the site root.
 - **GitHub Pages** — Settings → Pages → deploy from branch, folder `/ (root)`,
   then point the `muneris.co.uk` DNS at Pages and add a `CNAME` file.
 
+## Two things to resolve
+
+**1. The About page names clients the homepage anonymises.** The engagements
+section states that client names are withheld, and the first case study —
+"interim Global VP for a clinical-trials technology business" — maps directly
+onto the Calyx.AI entry on `about.html`. Anyone reading both pages can
+de-anonymise it. The same applies to Synomics and ColorTokens.
+
+This was left as-is rather than decided unilaterally: your CV names these
+publicly, and employment history is not the same as a client engagement. But
+it is a live inconsistency, and the fix is yours to choose — either anonymise
+those entries on the About page, or drop the confidentiality line from the
+engagements section.
+
+**2. The "available to buy" section is missing.** The supplied copy ends with
+"Software & tools … available to buy below", but the products, descriptions and
+prices below that point were not included, and the Netlify host is blocked from
+this environment so the page could not be fetched. That service line currently
+points at the contact page with "Ask what's available". Send me the product
+list and prices and I will build the section properly.
+
 ## Before it goes live
 
-- [ ] Confirm you are happy naming clients publicly (Optum/UnitedHealth, EMIS,
-      NHS Kent & Medway, Government of Jersey, Synomics, Calyx, ColorTokens)
-      and quoting the associated figures.
+- [ ] Resolve the two items above.
 - [ ] Decide whether to publish the mobile number — it is on the CV but is
       currently left off the site.
 - [ ] Add the registered office address to `contact.html` if you want it shown.
