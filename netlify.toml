@@ -29,16 +29,15 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
-    # Deliberately short while the custom domain and its certificate are being
-    # set up. A long max-age here is a trap during DNS cutover: one successful
-    # HTTPS response pins the browser to HTTPS for that period, so any later
-    # certificate problem becomes a hard error with no "proceed anyway" option.
-    # Once https://muneris.co.uk and https://www.muneris.co.uk both load
-    # cleanly, raise this to 31536000 (one year).
-    # Add includeSubDomains and preload only once every muneris.co.uk subdomain
-    # is known to be HTTPS-only — note the wildcard DNS record — as both are
-    # hard to reverse.
-    Strict-Transport-Security = "max-age=300"
+    # One year. Raised from the short cutover value once the custom domain and
+    # its certificate were confirmed working.
+    #
+    # Not includeSubDomains, deliberately: the zone carries a wildcard CNAME
+    # (*.muneris.co.uk) plus Microsoft 365 hosts — autodiscover, sip,
+    # lyncdiscover, mail — and asserting HTTPS-only across all of them could
+    # break a service that does not serve HTTPS. Not preload either; it is
+    # slow to reverse. Both need checking subdomain by subdomain first.
+    Strict-Transport-Security = "max-age=31536000"
 
 # --- Caching ---------------------------------------------------------------
 # Filenames are not content-hashed, so a long immutable cache would strand
