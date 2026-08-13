@@ -1,54 +1,75 @@
 /* ==========================================================================
    Muneris — brand tokens
    --------------------------------------------------------------------------
-   This is the ONLY file you need to edit to re-skin the site to the official
-   Muneris brand pack (Complete_MultiBrand_Pack / brands/muneris).
+   THE canonical Muneris theme. Colour values below are sampled directly from
+   the official logo artwork (see assets/img/) and are not to be guessed at or
+   substituted. Everything else on the site derives from these.
 
-   Colour values below are set from the brand pack's naming conventions
-   (fullcolour / mono-slate / reverse-white). If the official pack specifies
-   exact hex values, replace them here and every page follows.
+   Official brand colours, exact:
+     slate   #576E7E   the wordmark, and one third of the symbol
+     cyan    #51C8E8   symbol
+     orange  #FF8A3D   symbol
+     tint    #EEF2F5   the light ground the brand is presented on
+
+   Because cyan and orange are too light to carry text (1.95:1 and 2.35:1 on
+   white), each has an accessible derived tone for type and links. Every
+   text/background pairing used on the site clears WCAG AA (4.5:1); ratios are
+   noted per token.
    ========================================================================== */
 
 :root {
-  /* --- Core brand palette ------------------------------------------------ */
-  --ink:            #0E1A2B;  /* deepest slate — headings, dark sections     */
-  --slate:          #1E2D42;  /* mid slate — dark surfaces                   */
-  --slate-soft:     #35485F;  /* borders/dividers on dark                    */
+  /* --- Official brand colours (exact — do not alter) --------------------- */
+  --brand-slate:   #576E7E;
+  --brand-cyan:    #51C8E8;
+  --brand-orange:  #FF8A3D;
+  --brand-tint:    #EEF2F5;
 
-  --accent:         #0B6F63;  /* primary accent — links, buttons on light    */
-  --accent-deep:    #085048;  /* hover/pressed                               */
-  --accent-bright:  #2ED3BE;  /* accent on dark backgrounds only             */
+  /* --- Slate ramp, derived from the wordmark colour ---------------------- */
+  --ink:           #25333C;  /* headings              12.98:1 on white       */
+  --deep:          #2E3F4A;  /* dark section ground   10.90:1 on white       */
+  --slate-700:     #465D6C;  /*                        6.90:1 on white       */
+  --slate-soft:    #43566A;  /* dividers on dark                             */
 
-  --gold:           #A8853C;  /* sparing highlight — figures, rules          */
+  /* --- Text -------------------------------------------------------------- */
+  --text:          #2E3F4A;  /* body                  10.90:1 on white       */
+  --text-muted:    #536876;  /* secondary   5.82:1 white · 5.17:1 on tint     */
+  --on-dark:       #EEF2F5;  /*                        9.69:1 on --deep       */
+  --on-dark-muted: #B7C7D1;  /*                        6.28:1 on --deep       */
 
-  /* --- Neutrals ---------------------------------------------------------- */
-  --bg:             #FFFFFF;
-  --surface:        #F4F7F9;
-  --surface-2:      #E9EEF3;
-  --line:           #DCE4EC;
-  --text:           #16202E;
-  --text-muted:     #53657C;
-  --on-dark:        #EEF3F8;
-  --on-dark-muted:  #A9BACD;
+  /* --- Accents ----------------------------------------------------------- */
+  --accent:        #17758F;  /* cyan for type/links  5.28:1 white · 4.69 tint */
+  --accent-deep:   #146579;  /* hover                                        */
+  --accent-warm:   #A85310;  /* orange for type      5.37:1 white · 4.77 tint */
+
+  /* On dark grounds the pure brand colours are safe and should be used:
+     cyan 5.60:1 and orange 4.65:1 against --deep. */
+  --accent-on-dark: #51C8E8;
+
+  /* --- Surfaces ---------------------------------------------------------- */
+  --bg:            #FFFFFF;
+  --surface:       #EEF2F5;  /* the brand's own light ground                 */
+  --surface-2:     #E2E9EE;
+  --line:          #D9E1E7;
+  --line-strong:   #C3D0D9;
 
   /* --- Typography -------------------------------------------------------- */
+  /* The wordmark is a rounded geometric sans set in lowercase. The body face
+     is a neutral system stack so the logo keeps its typographic voice. */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
                Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
                "Liberation Mono", monospace;
 
-  /* The brand's signature device, carried over from the Muneris deck:
-     section labels set in letter-spaced capitals. */
-  --eyebrow-spacing: 0.22em;
+  --eyebrow-spacing: 0.15em;
 
   /* --- Scale & rhythm ---------------------------------------------------- */
-  --measure:        68ch;
-  --radius:         4px;
-  --radius-lg:      10px;
-  --shadow:         0 1px 2px rgba(14, 26, 43, .06),
-                    0 8px 24px rgba(14, 26, 43, .06);
-  --shadow-lg:      0 2px 4px rgba(14, 26, 43, .08),
-                    0 18px 48px rgba(14, 26, 43, .12);
+  --measure:       68ch;
+  --radius:        6px;
+  --radius-lg:     12px;
+  --shadow:        0 1px 2px rgba(37, 51, 60, .05),
+                   0 8px 24px rgba(37, 51, 60, .07);
+  --shadow-lg:     0 2px 4px rgba(37, 51, 60, .07),
+                   0 18px 48px rgba(37, 51, 60, .12);
 
   --step--1: clamp(0.86rem, 0.83rem + 0.12vw, 0.92rem);
   --step-0:  clamp(1rem,    0.97rem + 0.16vw, 1.09rem);

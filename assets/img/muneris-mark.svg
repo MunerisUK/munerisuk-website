@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Muneris">
-  <title>Muneris</title>
-  <rect width="32" height="32" rx="6" fill="#0E1A2B"/>
-  <path d="M8 22.5V11.2c0-.5.62-.74.95-.36l4.3 4.9c.4.46 1.12.46 1.52 0l4.3-4.9c.33-.38.95-.14.95.36V22.5"
-        fill="none" stroke="#2ED3BE" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M24 9.5v13" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>
-</svg>

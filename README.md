@@ -13,7 +13,8 @@ contact.html       Enquiry form (mailto) + company details
 assets/css/brand.css   ← brand tokens: colour, type, spacing
 assets/css/site.css    Layout and components
 assets/js/site.js      Mobile nav, footer year, scroll reveal
-assets/img/            Logo assets
+assets/img/            Official logo artwork
+CLAUDE.md              Canonical brand reference
 robots.txt, sitemap.xml
 ```
 
@@ -22,7 +23,7 @@ robots.txt, sitemap.xml
 | Section | Source |
 | --- | --- |
 | Positioning, services, career, credentials | `Martin Carpenter Feb 2026 CV.docx` (OneDrive) |
-| Letter-spaced capital section labels | Muneris deck styling |
+| Logo artwork and the four brand colours | OneDrive brand drop, sampled from the source PNGs |
 | Company number 09096411 | Companies House public register |
 
 ## Scope
@@ -51,37 +52,48 @@ product.
 
 ## Brand
 
-`assets/css/brand.css` is the single place to change the look. Every colour,
-font and spacing value on the site is a token in that file.
+The site uses the official Muneris brand — real logo artwork and the four
+colours sampled from it. **See [CLAUDE.md](CLAUDE.md) for the full brand
+reference**, which is the canonical description of the identity.
 
-Two things need your confirmation before this goes live:
+The short version:
 
-1. **Exact brand colours.** The official pack lives at
-   `Documents/Dev/Complete_MultiBrand_Pack_V2_2_1/brands/muneris/`, but its
-   `guidelines/` and `figma/` folders are empty and the logo files (SVG/PNG/JPG)
-   could not be read through the Microsoft 365 connector. The palette in
-   `brand.css` follows the pack's own naming — deep slate (`mono-slate`), a
-   reverse-white treatment, and a teal accent. Drop the real hex values into the
-   `--ink` / `--slate` / `--accent` tokens and the whole site follows.
+| | Hex | |
+| --- | --- | --- |
+| slate | `#576E7E` | wordmark, and a third of the symbol |
+| cyan | `#51C8E8` | symbol |
+| orange | `#FF8A3D` | symbol |
+| tint | `#EEF2F5` | the light ground the brand sits on |
 
-2. **The logo.** `assets/img/muneris-mark.svg` is a stand-in. To use the real
-   artwork, copy these out of the brand pack:
+Cyan and orange are too light to carry text (1.95:1 and 2.35:1 on white), so
+`brand.css` also defines derived tones — `--accent` `#17758F` and
+`--accent-warm` `#A85310` — for links and typed accents. Every text/background
+pairing on the site clears WCAG AA, and the ratios are noted per token in the
+file. The primary button is brand orange with dark ink type, because white on
+orange is only 2.35:1.
 
-   ```
-   brands/muneris/logos/svg/muneris-logo-horizontal-fullcolour.svg
-   brands/muneris/logos/svg/muneris-logo-reverse-white.svg
-   ```
+`assets/css/brand.css` is the single place to change the look. Nothing in
+`site.css` hard-codes a brand colour except `.rule`, the three-segment device
+that quotes the symbol.
 
-   into `assets/img/`, then in each page swap the `.brand` block for:
+### Logo files
 
-   ```html
-   <a class="brand" href="index.html" aria-label="Muneris — home">
-     <img src="assets/img/muneris-logo-horizontal-fullcolour.svg" alt="Muneris" width="150" height="32">
-   </a>
-   ```
+Generated from the OneDrive brand drop, trimmed to content with transparent
+backgrounds:
 
-   (The footer sits on a dark background — use `muneris-logo-reverse-white.svg`
-   there.) Also point the `<link rel="icon">` at the symbol asset.
+```
+muneris-logo-horizontal.png          default lockup, light backgrounds
+muneris-logo-horizontal-reverse.png  dark backgrounds (footer)
+muneris-logo-stacked.png             symbol above wordmark
+muneris-symbol.png                   symbol alone — favicon, hero watermark
+```
+
+In the reverse lockup the slate wordmark knocks out to white while the symbol
+keeps its cyan and orange; the symbol's slate third also goes white, since at
+`#576E7E` on the dark ground it would sit at 2.2:1 and read as a hole. If you
+would rather it stayed slate, regenerate that one asset.
+
+The wordmark is always lowercase and never letter-spaced.
 
 ## Running it locally
 
@@ -101,7 +113,6 @@ Any static host works. The repository root *is* the site root.
 
 ## Before it goes live
 
-- [ ] Confirm the brand hex values and swap in the official logo files.
 - [ ] Confirm you are happy naming clients publicly (Optum/UnitedHealth, EMIS,
       NHS Kent & Medway, Government of Jersey, Synomics, Calyx, ColorTokens)
       and quoting the associated figures.
