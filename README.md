@@ -6,7 +6,7 @@ progressive-enhancement JS. It will run on any static host.
 
 ```
 index.html         Home — hero, services overview, selected engagements (#work)
-services.html      Six service lines (#interim #ps #reviews #maturity #advisory #tools)
+services.html      Five service lines (#interim #ps #reviews #maturity #advisory)
 about.html         Martin Carpenter — profile, career, credentials
 contact.html       Enquiry form (mailto) + company details
 404.html           Not-found page
@@ -22,41 +22,52 @@ robots.txt, sitemap.xml
 
 | Section | Source |
 | --- | --- |
-| Hero, stats, six service lines, selected engagements | Copy supplied from the live Netlify build, used verbatim |
+| Hero, stats, service lines, selected engagements | Copy supplied from the live Netlify build, used verbatim |
 | Service detail pages, About, Contact | `Martin Carpenter Feb 2026 CV.docx` (OneDrive) |
 | Logo artwork and the four brand colours | OneDrive brand drop, sampled from the source PNGs |
 | Company number 09096411 | Companies House public register |
 
 The homepage copy is the supplied wording unchanged. The per-service detail on
-`services.html` expands each of the six one-liners; that expansion is written,
-not sourced, so read it before publishing.
+`services.html` expands each one-liner; that expansion is written, not sourced,
+so read it before publishing.
 
 ## Scope
 
-Muneris is positioned as **interim leadership and advisory**. Six service
+Muneris is positioned as **interim leadership and advisory**. Five service
 lines, with engagements presented anonymously.
 
-**WealthHorizon remains out of scope.** Note that the "Software & tools"
-service line is a different thing — templates and assessment frameworks
-distilled from client engagements, not a product venture.
+Anything software-as-a-product is out of scope: WealthHorizon, and the
+"Software & tools" line that offered templates and assessment frameworks for
+sale. The latter was removed along with the "available to buy" section it
+pointed at. Both are recoverable from git history if that changes.
 
-An earlier revision included a `ventures.html` page covering WealthHorizon and
-the board-advisory portfolio. It was removed rather than hidden, so the nav,
-sitemap and enquiry form carry no trace of it. To bring it back, recover the
-file from git history:
+### Client confidentiality
+
+Engagements are presented without client names. To keep the About page from
+undoing that, three career entries are anonymised by descriptor — the
+clinical-trials technology business, the genomics analytics business and the
+US cybersecurity vendor — since each was matchable against a case study.
+
+Salaried public-sector and corporate roles are still named: Government of
+Jersey, NHS Kent & Medway ICB, Optum UK and Reporting Online LLP. So are the
+two health-tech board advisory positions further down that page. Say the word
+if you want either group anonymised too.
+
+### Recovering removed work
+
+An earlier revision had a `ventures.html` page covering WealthHorizon, and a
+later one had the "Software & tools" service line. Both were removed rather
+than hidden, so no nav, sitemap or form entry references either. To recover:
 
 ```bash
-git show a32206a:ventures.html > ventures.html
+git show a32206a:ventures.html > ventures.html   # WealthHorizon page
+git show eaf602e:services.html                   # includes the #tools section
 ```
 
-Then re-add the nav and footer links and the sitemap entry. Note that the page
-deliberately excluded every commercial figure from the WealthHorizon deck
-(TAM/SAM/SOM, ARPU, LTV:CAC, pricing, the raise), as that deck is marked
-*Confidential — for discussion*.
-
-The board, advisory and non-executive roles still appear — on the homepage and
-in full on `about.html` — since those are consultancy credentials rather than
-product.
+Then re-add the nav, footer and sitemap entries. The ventures page deliberately
+excluded every commercial figure from the WealthHorizon deck (TAM/SAM/SOM,
+ARPU, LTV:CAC, pricing, the raise), as that deck is marked *Confidential — for
+discussion*.
 
 ## Brand
 
@@ -119,30 +130,8 @@ Any static host works. The repository root *is* the site root.
 - **GitHub Pages** — Settings → Pages → deploy from branch, folder `/ (root)`,
   then point the `muneris.co.uk` DNS at Pages and add a `CNAME` file.
 
-## Two things to resolve
-
-**1. The About page names clients the homepage anonymises.** The engagements
-section states that client names are withheld, and the first case study —
-"interim Global VP for a clinical-trials technology business" — maps directly
-onto the Calyx.AI entry on `about.html`. Anyone reading both pages can
-de-anonymise it. The same applies to Synomics and ColorTokens.
-
-This was left as-is rather than decided unilaterally: your CV names these
-publicly, and employment history is not the same as a client engagement. But
-it is a live inconsistency, and the fix is yours to choose — either anonymise
-those entries on the About page, or drop the confidentiality line from the
-engagements section.
-
-**2. The "available to buy" section is missing.** The supplied copy ends with
-"Software & tools … available to buy below", but the products, descriptions and
-prices below that point were not included, and the Netlify host is blocked from
-this environment so the page could not be fetched. That service line currently
-points at the contact page with "Ask what's available". Send me the product
-list and prices and I will build the section properly.
-
 ## Before it goes live
 
-- [ ] Resolve the two items above.
 - [ ] Decide whether to publish the mobile number — it is on the CV but is
       currently left off the site.
 - [ ] Add the registered office address to `contact.html` if you want it shown.
