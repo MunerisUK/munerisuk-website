@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Muneris — brand tokens
+   --------------------------------------------------------------------------
+   This is the ONLY file you need to edit to re-skin the site to the official
+   Muneris brand pack (Complete_MultiBrand_Pack / brands/muneris).
+
+   Colour values below are set from the brand pack's naming conventions
+   (fullcolour / mono-slate / reverse-white). If the official pack specifies
+   exact hex values, replace them here and every page follows.
+   ========================================================================== */
+
+:root {
+  /* --- Core brand palette ------------------------------------------------ */
+  --ink:            #0E1A2B;  /* deepest slate — headings, dark sections     */
+  --slate:          #1E2D42;  /* mid slate — dark surfaces                   */
+  --slate-soft:     #35485F;  /* borders/dividers on dark                    */
+
+  --accent:         #0B6F63;  /* primary accent — links, buttons on light    */
+  --accent-deep:    #085048;  /* hover/pressed                               */
+  --accent-bright:  #2ED3BE;  /* accent on dark backgrounds only             */
+
+  --gold:           #A8853C;  /* sparing highlight — figures, rules          */
+
+  /* --- Neutrals ---------------------------------------------------------- */
+  --bg:             #FFFFFF;
+  --surface:        #F4F7F9;
+  --surface-2:      #E9EEF3;
+  --line:           #DCE4EC;
+  --text:           #16202E;
+  --text-muted:     #53657C;
+  --on-dark:        #EEF3F8;
+  --on-dark-muted:  #A9BACD;
+
+  /* --- Typography -------------------------------------------------------- */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+               "Liberation Mono", monospace;
+
+  /* The brand's signature device, carried over from the Muneris deck:
+     section labels set in letter-spaced capitals. */
+  --eyebrow-spacing: 0.22em;
+
+  /* --- Scale & rhythm ---------------------------------------------------- */
+  --measure:        68ch;
+  --radius:         4px;
+  --radius-lg:      10px;
+  --shadow:         0 1px 2px rgba(14, 26, 43, .06),
+                    0 8px 24px rgba(14, 26, 43, .06);
+  --shadow-lg:      0 2px 4px rgba(14, 26, 43, .08),
+                    0 18px 48px rgba(14, 26, 43, .12);
+
+  --step--1: clamp(0.86rem, 0.83rem + 0.12vw, 0.92rem);
+  --step-0:  clamp(1rem,    0.97rem + 0.16vw, 1.09rem);
+  --step-1:  clamp(1.2rem,  1.13rem + 0.34vw, 1.42rem);
+  --step-2:  clamp(1.45rem, 1.32rem + 0.64vw, 1.85rem);
+  --step-3:  clamp(1.75rem, 1.52rem + 1.13vw, 2.45rem);
+  --step-4:  clamp(2.1rem,  1.7rem  + 1.95vw, 3.3rem);
+
+  --gutter: clamp(1.15rem, 0.9rem + 1.2vw, 2rem);
+  --section-y: clamp(3.5rem, 2.6rem + 4vw, 6.5rem);
+}
