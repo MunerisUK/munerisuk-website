@@ -131,6 +131,7 @@ h2 + p, h3 + p, h3 + ul, h3 + ol { margin-top: .7rem; }
 .cta .btn--ghost:hover { border-color: var(--brand-cyan); color: #fff; }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
+.btn-row--center { justify-content: center; }
 
 /* --- Site header ---------------------------------------------------------- */
 .site-header {

@@ -5,6 +5,7 @@ dependencies, no JavaScript framework — plain HTML, CSS and ~60 lines of
 progressive-enhancement JS. It will run on any static host.
 
 ```
+netlify.toml       Netlify publish settings, security and caching headers
 index.html         Home — hero, services overview, selected engagements (#work)
 services.html      Five service lines (#interim #ps #reviews #maturity #advisory)
 about.html         Martin Carpenter — profile, career, credentials
@@ -123,12 +124,44 @@ python3 -m http.server 8000
 
 ## Deploying
 
-Any static host works. The repository root *is* the site root.
+Any static host works. The repository root *is* the site root, and there is no
+build step.
 
-- **Cloudflare Pages / Netlify** — connect the repo, build command: none,
-  output directory: `/`.
+### Netlify (from GitHub)
+
+`netlify.toml` carries the configuration, so connect the repo and accept the
+defaults — leave the build command empty and the publish directory as `.`;
+Netlify reads both from the file. Deploys happen on push to `main`.
+
+The file also sets:
+
+- **Security headers**, including a strict Content-Security-Policy. The site
+  uses no inline script or style, so the policy needs neither `unsafe-inline`
+  nor `unsafe-eval`. If you ever add an inline `<script>`, an inline `<style>`,
+  a `style="..."` attribute, or an external font/analytics/embed, the policy
+  must be widened or the page will silently break — check the browser console.
+- **Caching.** Asset filenames are not content-hashed, so assets get a one-hour
+  window and revalidate by ETag after that, and HTML always revalidates. If you
+  later fingerprint filenames, `/assets/*` can move to
+  `max-age=31536000, immutable`.
+- **`skip_processing`**, so Netlify serves the files as committed. Without it
+  Netlify's Pretty URLs would redirect `/about.html` to `/about`, disagreeing
+  with the canonical URLs in each page's `<head>`.
+
+`404.html` at the publish root is picked up automatically for unmatched paths —
+no redirect rule needed.
+
+For the custom domain: add `muneris.co.uk` in Netlify under Domain management,
+point the DNS there, and let Netlify issue the certificate. Handle the
+apex/`www` redirect in Netlify's domain settings rather than in this file.
+
+### Other hosts
+
+- **Cloudflare Pages** — connect the repo, build command: none, output
+  directory: `/`. Headers would need porting to a `_headers` file.
 - **GitHub Pages** — Settings → Pages → deploy from branch, folder `/ (root)`,
-  then point the `muneris.co.uk` DNS at Pages and add a `CNAME` file.
+  then point DNS at Pages and add a `CNAME` file. Note that GitHub Pages cannot
+  set custom response headers, so the CSP above would not apply.
 
 ## Before it goes live
 

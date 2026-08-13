@@ -1,0 +1,48 @@
+# Netlify configuration for muneris.co.uk
+#
+# The site is plain static HTML with no build step, so Netlify needs almost
+# nothing here — this file exists to keep the settings in the repository rather
+# than in the Netlify UI, and to add security and caching headers.
+#
+# Note: 404.html at the publish root is picked up by Netlify automatically for
+# unmatched paths. No redirect rule is needed for it.
+
+[build]
+  # The repository root IS the site root. No build command.
+  publish = "."
+
+[build.processing]
+  # Serve the files exactly as committed. In particular this keeps Netlify from
+  # rewriting /about.html to /about, which would disagree with the canonical
+  # URLs in each page's <head>.
+  skip_processing = true
+
+# --- Security headers ------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Every asset is first-party; the only exceptions are data: URIs for images
+    # and the mailto: action on the enquiry form. No inline script or style is
+    # used anywhere, so neither 'unsafe-inline' nor 'unsafe-eval' is required.
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    # Add includeSubDomains and preload once every muneris.co.uk subdomain is
+    # known to be HTTPS-only — both are hard to reverse.
+    Strict-Transport-Security = "max-age=31536000"
+
+# --- Caching ---------------------------------------------------------------
+# Filenames are not content-hashed, so a long immutable cache would strand
+# visitors on stale CSS after a deploy. HTML always revalidates; assets get a
+# short window and revalidate cheaply against their ETag after that.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
