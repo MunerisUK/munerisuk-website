@@ -7,7 +7,6 @@ progressive-enhancement JS. It will run on any static host.
 ```
 index.html         Home
 services.html      Four service practices (#board #interim #pe #ai)
-ventures.html      WealthHorizon + advisory/board roles
 about.html         Martin Carpenter — profile, career, credentials
 contact.html       Enquiry form (mailto) + company details
 404.html           Not-found page
@@ -23,13 +22,32 @@ robots.txt, sitemap.xml
 | Section | Source |
 | --- | --- |
 | Positioning, services, career, credentials | `Martin Carpenter Feb 2026 CV.docx` (OneDrive) |
-| WealthHorizon | `WealthHorizon_Pitch_Deck.pptx` (OneDrive) |
-| Letter-spaced capital section labels | Muneris/WealthHorizon deck styling |
+| Letter-spaced capital section labels | Muneris deck styling |
 | Company number 09096411 | Companies House public register |
 
-**Deliberately excluded:** every commercial figure from the WealthHorizon deck
-(TAM/SAM/SOM, ARPU, LTV:CAC, pricing, the raise). That deck is marked
-*Confidential — for discussion*, so the public page describes the product only.
+## Scope
+
+The site presents Muneris as a consultancy practice only — advisory, interim
+leadership and PE work. **Software products and ventures (WealthHorizon) are
+deliberately out of scope for now.**
+
+An earlier revision included a `ventures.html` page covering WealthHorizon and
+the board-advisory portfolio. It was removed rather than hidden, so the nav,
+sitemap and enquiry form carry no trace of it. To bring it back, recover the
+file from git history:
+
+```bash
+git show a32206a:ventures.html > ventures.html
+```
+
+Then re-add the nav and footer links and the sitemap entry. Note that the page
+deliberately excluded every commercial figure from the WealthHorizon deck
+(TAM/SAM/SOM, ARPU, LTV:CAC, pricing, the raise), as that deck is marked
+*Confidential — for discussion*.
+
+The board, advisory and non-executive roles still appear — on the homepage and
+in full on `about.html` — since those are consultancy credentials rather than
+product.
 
 ## Brand
 
