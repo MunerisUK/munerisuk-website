@@ -380,6 +380,16 @@ a.card:hover .card__link { color: var(--accent-deep); }
 }
 .section--dark .pull { border-color: var(--brand-cyan); color: #fff; }
 
+/* --- Etymology note ------------------------------------------------------- */
+.etymology {
+  margin-top: 1.6rem;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--brand-cyan);
+  color: var(--text-muted);
+  font-size: var(--step-0);
+}
+.etymology strong { color: var(--ink); font-weight: 650; }
+
 /* --- Tag list ------------------------------------------------------------- */
 .tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; }
 .tags li {
