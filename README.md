@@ -7,8 +7,8 @@ progressive-enhancement JS. It will run on any static host.
 ```
 netlify.toml       Netlify publish settings, security and caching headers
 index.html         Home — hero, services overview, selected engagements (#work)
-services.html      Five service lines (#interim #ps #reviews #maturity #advisory)
-about.html         Martin Carpenter — profile, career, credentials
+services.html      Six service lines (#interim #ps #reviews #maturity #advisory #operating)
+about.html         The practice — capabilities, experience, credentials
 contact.html       Enquiry form (mailto) + company details
 404.html           Not-found page
 assets/css/brand.css   ← brand tokens: colour, type, spacing
@@ -34,7 +34,7 @@ so read it before publishing.
 
 ## Scope
 
-Muneris is positioned as **interim leadership and advisory**. Five service
+Muneris is positioned as **interim leadership and advisory**. Six service
 lines, with engagements presented anonymously.
 
 Anything software-as-a-product is out of scope: WealthHorizon, and the
@@ -168,7 +168,6 @@ apex/`www` redirect in Netlify's domain settings rather than in this file.
 - [ ] Decide whether to publish the mobile number — it is on the CV but is
       currently left off the site.
 - [ ] Add the registered office address to `contact.html` if you want it shown.
-- [ ] Add a LinkedIn URL to the footer/contact page.
 - [ ] The enquiry form uses `mailto:`, which depends on the visitor having a
       mail client configured. If you would rather have a proper form, point the
       `<form action>` at Formspree, Netlify Forms or Cloudflare Workers.
